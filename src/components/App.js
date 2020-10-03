@@ -34,7 +34,8 @@ const App = () => {
 	};
 
 	const deleteItem = _id => {
-		setLogs(logs.filter(log => log._id !== _id));
+		// setLogs(logs.filter(log => log._id !== _id));
+		ipcRenderer.send("logs:delete", _id);
 		showAlert("Log removed!");
 	};
 
