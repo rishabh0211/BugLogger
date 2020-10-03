@@ -12,7 +12,12 @@ module.exports = {
 			},
 			{
 				test: /\.jsx?$/,
-				use: [{ loader: 'babel-loader', query: { compact: false } }],
+				use: {
+					loader: 'babel-loader',
+					options: {
+						presets: ['@babel/preset-env', '@babel/preset-react']
+					}
+				},
 			},
 			{
 				test: /\.(jpe?g|png|gif)$/,
@@ -28,7 +33,7 @@ module.exports = {
 	},
 	target: 'electron-renderer',
 	plugins: [
-		new HtmlWebpackPlugin({ title: 'React Electron App' }),
+		new HtmlWebpackPlugin({ title: 'BugLogger' }),
 		new webpack.DefinePlugin({
 			'process.env.NODE_ENV': JSON.stringify('development'),
 		}),
